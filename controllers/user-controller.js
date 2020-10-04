@@ -18,7 +18,7 @@ const userController = {
     },
 
     //get one user by id
-    getUserByID({ params}, res) {
+    getUserById({ params}, res) {
         User.findOne({ _id: params.id })
         .populate({
             path: 'thoughts',
@@ -69,6 +69,40 @@ const userController = {
             res.json(dbUserData);
         })
         .catch(err => res.sttaus(400).json(err));
+    },
+
+    // add friend
+    addFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId },
+            { friends: params.friendId },
+            { new: true, runValidators: true }
+        )
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with that id'})
+                return;
+            }
+            res.json(dbUserData)
+        })
+        .catch(err => res.sttaus(400).json(err))
+    },
+
+    // delete friend
+    deleteFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId },
+            { $pull: { friends: params.friendId }},
+            { new: true, runValidators: true }
+        )
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with that id'})
+                return;
+            }
+            res.json(dbUserData)
+        })
+        .catch(err => res.sttaus(400).json(err))
     }
 
 };

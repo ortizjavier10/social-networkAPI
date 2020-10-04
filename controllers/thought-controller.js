@@ -72,8 +72,8 @@ const thoughtController = {
             .catch(err => res.status(400).json(err));
     },
 
-    // remove thought
-    removeThought({ params}, res ) {
+    // delete thought
+    deleteThought({ params}, res ) {
         User.findOneAndUpdate (
             { _id: params.userId },
             { $pull: { thoughts: params.thoughtId }},
@@ -115,8 +115,8 @@ const thoughtController = {
         .catch(err => res.json(err));
     }, 
 
-    // remove a reaction
-    removeReaction({ params }, res) {
+    // delete a reaction
+    deleteReaction({ params }, res) {
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
             { $pull: {reactions: { reactionId: params.reactionId }}},
