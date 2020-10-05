@@ -13,12 +13,7 @@ const UserSchema = new Schema(
         type: String,
         required: true,
         unique: true,
-        validate: {
-            validator: email => {
-              return /.+@.+\..+/.test(email);
-            },
-            message: props => `${props.value} is not a valid email`
-        }
+        match: [/.+@.+\..+/, 'Please enter a valid email']
        
     },
     thoughts: [
@@ -31,7 +26,7 @@ const UserSchema = new Schema(
     friends: [
         {
          type: Schema.Types.ObjectId,
-         ref: 'Friend'
+         ref: 'User'
         }
     ]
 
