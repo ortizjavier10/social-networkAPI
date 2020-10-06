@@ -47,7 +47,7 @@ const userController = {
 
     // update user by id
     updateUser({ params, body }, res) {
-        User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+        User.findOneAndUpdate({ _id: params.userId }, body, { new: true, runValidators: true })
             .then(dbUserData => {
             if (!dbUserData) {
             res.status(404).json({ message: 'No user found with this id!' });
@@ -60,7 +60,7 @@ const userController = {
 
     // delete user
     deleteUser({ params }, res) {
-        User.findByIdAndDelete({ _id: params.id })
+        User.findByIdAndDelete({ _id: params.userId })
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ mesage: 'No user found wit this id! '});
@@ -68,7 +68,7 @@ const userController = {
             }
             res.json(dbUserData);
         })
-        .catch(err => res.sttaus(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
 
     // add friend
@@ -85,7 +85,7 @@ const userController = {
             }
             res.json(dbUserData)
         })
-        .catch(err => res.sttaus(400).json(err))
+        .catch(err => res.status(400).json(err))
     },
 
     // delete friend
@@ -102,7 +102,7 @@ const userController = {
             }
             res.json(dbUserData)
         })
-        .catch(err => res.sttaus(400).json(err))
+        .catch(err => res.status(400).json(err))
     }
 
 };
