@@ -32,7 +32,7 @@ router
 
 // /api/thoughts/:thoughtId/reactions
 router
-    .route('/:thoughtId/reactions/:reactionId')
+    .route('/:thoughtId/reactions')
     .post(addReaction);
 
 // /api/thoughts/:thoughId/reactions/:reactionId
