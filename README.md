@@ -9,7 +9,6 @@ application. Users can be created, updated and deleted. Users can create Thought
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [Sample](#sample)
 * [Demo](#Demo)
 * [License](#license)
 * [Questions](#questions)
@@ -27,11 +26,10 @@ Run the code below to start the server:
 npm start
 ```
 
-## Sample
-Sample scheenshot:
 
 ## Demo
 Please find the demo walkthrough video below:
+https://drive.google.com/file/d/1dcvmy1Ci_0c2llXod2IUIICYKQmUEOBP/view
 
 
 
